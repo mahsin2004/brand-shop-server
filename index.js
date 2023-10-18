@@ -26,9 +26,14 @@ async function run() {
   try {
     const brandCollection = client.db("brandDB").collection("brands");
 
+    app.post("/brands", async(req, res) => {
+      const brand = req.body;
+      const result = await brandCollection.insertOne(brand);
+      res.send(result);
+    })
+
     app.get("/brands", async(req, res) => {
       const result = await brandCollection.find().toArray();
-      console.log(result)
       res.send(result);
     })
     // Connect the client to the server	(optional starting in v4.7)
