@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require('dotenv').config()
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -36,6 +36,28 @@ async function run() {
       const result = await brandCollection.find().toArray();
       res.send(result);
     })
+    
+    app.put("/brands/:id", async(req, res) => {
+       const id = req.params.id;
+       const brand = req.body;
+       const filter = {_id: new ObjectId(id)};
+       const options = { upsert: true };
+       const updateBrand = {
+         $set: {
+          name: brand.name, 
+          brandName: brand.brandName,
+          type: brand.type,
+          price: brand.price,
+          rating: brand.rating,
+          shortDescription: brand.shortDescription,
+          image: brand.image
+         }
+       }
+       const result = await brandCollection.updateOne(filter, updateBrand, options);
+       res.send(result);
+    })
+
+
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
