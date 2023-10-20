@@ -77,7 +77,32 @@ async function run() {
       const result = await nameCollection.findOne(query);
       res.send(result);
     })
+    
+    // My cart storing database collection
+    app.post("/myCart", async(req, res) => {
+      const brand = req.body;
+      const result = await myCartCollection.insertOne(brand);
+      res.send(result);
+    })
 
+    app.get("/myCart", async(req, res) => {
+      const result = await myCartCollection.find().toArray();
+      res.send(result);
+    })
+
+    app.get("/myCart/:id", async(req, res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await myCartCollection.findOne(query);
+      res.send(result);
+    })
+
+    app.delete("/myCart/:id", async(req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await myCartCollection.deleteOne(query);
+      res.send(result);
+    });
 
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
