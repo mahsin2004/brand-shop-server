@@ -25,6 +25,8 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const brandCollection = client.db("brandDB").collection("brands");
+    const nameCollection = client.db("brandDB").collection("names");
+    const myCartCollection = client.db("brandDB").collection("myCart");
 
     app.post("/brands", async(req, res) => {
       const brand = req.body;
@@ -34,6 +36,13 @@ async function run() {
 
     app.get("/brands", async(req, res) => {
       const result = await brandCollection.find().toArray();
+      res.send(result);
+    })
+
+    app.get("/brands/:id", async(req, res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await brandCollection.findOne(query);
       res.send(result);
     })
     
@@ -55,6 +64,18 @@ async function run() {
        }
        const result = await brandCollection.updateOne(filter, updateBrand, options);
        res.send(result);
+    })
+
+    // adding Brand name collection
+    app.get("/names", async(req, res) => {
+      const result = await nameCollection.find().toArray();
+      res.send(result);
+    })
+    app.get("/names/:id", async(req, res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await nameCollection.findOne(query);
+      res.send(result);
     })
 
 
