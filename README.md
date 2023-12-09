@@ -1,8 +1,34 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 3. Cars Collection Website Server
 
-Currently, two official plugins are available:
+**[Client side Repo Link](https://github.com/mahsin2004/brand-shop-client)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**[Live Link](https://brand-shop-client-1.web.app)**
+
+## Installation
+
+**Clone the repository:** <br/>
+git clone https://github.com/mahsin2004/brand-shop-server
+
+<ul>
+<li>
+Install dependencies: npm install</li>
+<li>
+Change into the project directory: cd your-project</li>
+</ul>
+
+## Set keys in .env file to connect mongodb
+
+USER_NAME=brand-shop
+USER_PASSWORD=zqKy9HLzpay4OWti
+USER_ACCESS_TOKEN=1527c7c285bb0210828697418c0f7ded8592e086d63ddda94704b505bffee86c7212acb81260f8878cb79c81e6e733c2ce6d94116086d20870612b661424bdd1
+
+**Features :**
+
+<ul>
+ <li>CRUD Operations: Perform Create, Read, Update, and Delete operations on [brands, names, myCart].</li>
+</ul>
+
+
+
+
