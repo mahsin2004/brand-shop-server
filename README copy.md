@@ -14,7 +14,7 @@ git clone https://github.com/mahsin2004/brand-shop-server
 <li>
 Install dependencies: npm install</li>
 <li>
-Install dependencies: npm install</li>
+Change into the project directory: cd your-project</li>
 </ul>
 
 ## Set keys in .env file to connect mongodb
